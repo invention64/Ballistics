@@ -1,23 +1,48 @@
 
+import javafx.application.Application;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class GUI {
-    private static void createAndShowGUI() {
-        JFrame frame = new JFrame("Ballistics Calculator");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel emptyLabel = new JLabel("test");
-        emptyLabel.setPreferredSize(new Dimension(800, 640));
-        frame.getContentPane().add(emptyLabel, BorderLayout.CENTER);
-        frame.pack();
-        frame.setVisible(true);
+import javafx.geometry.*;
+import javafx.scene.Scene;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.*;
+import javafx.stage.Stage;
+
+public class GUI extends Application {
+    java.util.List calibers;
+    java.util.List caliberNames;
+
+    public void start(Stage primaryStage) {
+        configs();
+        System.out.println(calibers);
+        System.out.println(caliberNames);
+        primaryStage.setTitle("Ballistics Calculator");
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new javafx.geometry.Insets(25, 25, 25, 25));
+        Text scenetitle = new Text("Ballistics");
+        scenetitle.setFont(javafx.scene.text.Font.font("Tahoma", FontWeight.NORMAL, 20));
+        grid.add(scenetitle, 0, 0, 2, 1);
+        Calculations calc = new Calculations();
+        JComboBox cali = new JComboBox(caliberNames.toArray());
+        Scene scene = new Scene(grid, 640, 640);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {createAndShowGUI();}
-        });
+        launch(args);
+    }
 
+    private void configs(){
+        ElectricBugaloo cali = new ElectricBugaloo("calibers");
+        calibers = cali.read();
+        caliberNames = cali.readHashes();
     }
 }
+

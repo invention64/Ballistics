@@ -1,2 +1,0 @@
-# Ballistics
-Ballistics calculator 
