@@ -1,2 +1,2 @@
 # Ballistics
-Ballistics calculator 
+A Simple Ballistics calculator written in Java.
