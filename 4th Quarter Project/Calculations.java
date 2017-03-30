@@ -12,7 +12,7 @@ public class Calculations {
 	//Variation Left/Right of target (m) (Output)
 	//How far to correct (°) (Output)
 	//Angle N/S/E/W	(°) (Input)
-	public static void calculate (double range,double velocity,double elevation)
+	public static double[] calculate (double range,double velocity,double elevation)
 	{
 		@SuppressWarnings("resource")
 		/*
@@ -33,5 +33,7 @@ public class Calculations {
 		double cos=(Math.acos((velocity*t)/range));
 		double ang=90-((cos*180)/(Math.PI));
 		System.out.println("firing angle" +ang);
+		double output[] = {t,ang};
+		return output;
 	}
 }
