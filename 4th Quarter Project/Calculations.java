@@ -22,18 +22,21 @@ public class Calculations {
 		Double e=
 		*/
 		//horizontal velocity
-		double v=Math.sqrt((velocity*velocity)+2*-9.81*elevation);
+		double v = Math.pow(velocity,2)+(2.0*9.81*elevation);
+		double v2=Math.sqrt(v);
+		System.out.println("velocity 2: " +v+"\n"+v2);
 		//flight time
-		double t=(range/velocity);
+		double t=range/(velocity-(velocity-v));
 		System.out.println("Time to Target: " +t);
 		//change in height
 			//allows for confirmation of value utilized relative to input value
 		double y=(0.5*-9.81*(t*t)+velocity*t);
 		//firing angle
-		double cos=(Math.acos((velocity*t)/range));
-		double ang=90-((cos*180)/(Math.PI));
-		System.out.println("firing angle" +ang);
-		double output[] = {t,ang};
+		double cos=(Math.acos(range/(velocity*t)));
+		double ang=(cos*180);
+		double fang=(ang/(Math.PI));
+		System.out.println("firing angle" +fang);
+		double output[] = {t,fang};
 		return output;
 	}
 }
