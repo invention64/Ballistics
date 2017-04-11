@@ -1,40 +1,40 @@
-#7.62x51mm M80 FMJ
+#  7.62x51mm M80 FMJ
 833
-#7.62x51mm M118 LR BTHP
+#  7.62x51mm M118 LR BTHP
 790
-#7.62x51mm M61 AP
+#  7.62x51mm M61 AP
 838
-#7.62x51mm M160 FRNG
+#  7.62x51mm M160 FRNG
 402
-#5.56x45mm SS109 FMJBT
+#  5.56x45mm SS109 FMJBT
 940
-#5.56x45mm M855A1 FMJBT
+#  5.56x45mm M855A1 FMJBT
 960
-#5.56x45mm MK262 OTM
+#  5.56x45mm MK262 OTM
 826.77
-#5.56x45mm MK318 SOST
+#  5.56x45mm MK318 SOST
 891.54
-#.338 LM SP
+#  .338 LM SP
 1005
-#.338 LM Sierra HPBT MK
+#  .338 LM Sierra HPBT MK
 826
-#.300 WM BT
+#  .300 WM BT
 959
-#.300 WM Sierra HPBT MK
+#  .300 WM Sierra HPBT MK
 870
-#.30-06 Springfield Nosler
+#  .30-06 Springfield Nosler
 890
-#.30-06 Springfield BTSP
+#  .30-06 Springfield BTSP
 850
-#.30-06 Springfield M2 AP
+#  .30-06 Springfield M2 AP
 969.26
-#.30-06 Springfield M72 MATCH
+#  .30-06 Springfield M72 MATCH
 807
-#.300 AAC BLK 125g OTM
+#  .300 AAC BLK 125g OTM
 675
-#.300 AAC BLK 220g OTM
+#  .300 AAC BLK 220g OTM
 310
-#.300 AAC BLK Lehigh Def. CQ
+#  .300 AAC BLK Lehigh Def. CQ
 850
-#.300 AAC BLK OTFB
+#  .300 AAC BLK OTFB
 780

@@ -4,37 +4,25 @@
 #Done for Java project
 #Made Possible by the Following Sponsors:
 #
+
 #Header written 3/31/2017
  */
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.*;
-import javafx.event.ActionEvent;
 import javafx.geometry.*;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.*;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
-import javafx.*;
-
-import java.awt.*;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.util.*;
-import java.util.List;
 
 public class GUI extends Application {
     java.util.List calibers;
@@ -79,10 +67,38 @@ public class GUI extends Application {
         TextField elev = new TextField();
         elev.setPromptText("Meters");
         grid.add(elev,1,3);
+
+
+        Label WS = new Label("Wind Speed:");
+        grid.add(WS,0,4);
+        TextField windSpeed = new TextField();
+        elev.setPromptText("M/s");
+        grid.add(windSpeed,1,4);
+
+
+        Label WA = new Label("Wind Angle:");
+        grid.add(WA,0,5 );
+        TextField windAngle = new TextField();
+        elev.setPromptText("Degrees");
+        grid.add(windAngle,1,5);
+
+
+        Label CA = new Label("Compass Angle:");
+        grid.add(CA,0,6);
+        TextField compassAngle = new TextField();
+        elev.setPromptText("Degrees");
+        grid.add(compassAngle,1,6);
+
+
         Label outputTime = new Label();
-        grid.add(outputTime,0,5);
+        grid.add(outputTime,0,8);
         Label outputAng = new Label();
-        grid.add(outputAng,1,5);
+        grid.add(outputAng,1,8);
+        Label outputWindDiff = new Label();
+        grid.add(outputTime,0,9);
+        Label outputWindage = new Label();
+        grid.add(outputAng,1,9);
+
 
 
         //Constructing the Buttons
@@ -107,26 +123,35 @@ public class GUI extends Application {
                     System.out.println(velocity+"\n"+b+"\n"+c);
                     outputTime.setTextFill(Color.GREEN);
                     outputAng.setTextFill(Color.GREEN);
-                    String T = String.valueOf(shave.format(calc.calculate(velocity,b,c)[0]));
-                    String ANG = String.valueOf(shave.format(calc.calculate(velocity,b,c)[1]));
+                    double outputs[] = calc.calculate(velocity,b,c,Double.parseDouble(windSpeed.getText()),Double.parseDouble(windAngle.getText()),Double.parseDouble(compassAngle.getText()));
+                    String T = String.valueOf(shave.format(outputs[0]));
+                    String ANG = String.valueOf(shave.format(outputs[1]));
+                    String WINDDIFF = String.valueOf(shave.format(outputs[2]));
+                    String WINDAGE = String.valueOf(shave.format(outputs[3]));
                     System.out.println(T);
                     outputTime.setText("Time to Target= "+T+"s");
                     outputAng.setText("Firing Angle= "+ANG);
+                    outputWindDiff.setText("Flight Angle= "+WINDDIFF);
+                    outputWindage.setText("Point of Impact Shift= "+WINDAGE);
                 } catch (IllegalArgumentException e){
                     outputTime.setTextFill(Color.FIREBRICK);
                     outputAng.setText("");
+                    outputWindDiff.setText("");
+                    outputWindage.setText("");
                     System.out.println(e);
                     outputTime.setText("Null Values Detected");
                 }
                 catch (Exception e){
                     outputTime.setTextFill(Color.FIREBRICK);
                     outputAng.setText("");
+                    outputWindDiff.setText("");
+                    outputWindage.setText("");
                     System.out.println(e);
                     outputTime.setText("Error Occurred");
                 }
             }
         });
-        grid.add(confirm,0,4);
+        grid.add(confirm,0,7);
 
         javafx.scene.control.Button clear = new javafx.scene.control.Button("Clear Selections");
         clear.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
@@ -137,9 +162,11 @@ public class GUI extends Application {
                 cali.setValue("");
                 outputAng.setText("");
                 outputTime.setText("");
+                outputWindDiff.setText("");
+                outputWindage.setText("");
             }
         });
-        grid.add(clear,1,4);
+        grid.add(clear,1,7);
 
         //Setting the Scene up
 
